@@ -8,8 +8,8 @@ app.directive('progressBar', function() {
         controller: function($scope, $timeout) {
             $scope.progressBarAlive = false
             $scope.$on('activateProgressBar', function(e) {
-                console.log('hello')
-                $scope.progressBarAlive = true;
+                $scope.progressBarAlive = false;
+                $timeout(function() {console.log('hello');$scope.progressBarAlive=true}, 0);
             })
             $scope.$on('reset', function(e) {
                 $scope.progressBarAlive = false;
@@ -76,8 +76,8 @@ app.directive('infoMsgs', function() {
         controller: function($scope) {
             $scope.messages = [];
             $scope.$on('generateMsg', function(e, args) {
-                $scope.generateMessage(args[0], args[1]);
                 $scope.$broadcast('reset');
+                $scope.generateMessage(args[0], args[1]);
             })
             $scope.generateMessage = (text, type) => $scope.messages = [...$scope.messages, {type: type, text: text}];
             $scope.onMessageClick = (index) => $scope.messages = $scope.messages.filter((i, idx) => idx != index);

@@ -120,7 +120,7 @@ header {
 }
 .progress-bar.ng-enter {
     width:0px;
-    transition: 5s linear all;
+    transition: 10s linear all;
 }
 .progress-bar.ng-enter-active {
     width: 100%;
